@@ -18,7 +18,7 @@ name: recordatorio-telegram
 
 on:
   schedule:
-    - cron: "0 14 * * *"      # 08:00 CDMX todos los días. Edita este valor.
+    - cron: "0 16 * * 1-6"    # 10:00 CDMX de lunes a sábado. Edita este valor.
   workflow_dispatch: {}       # botón para ejecutarlo a mano desde la pestaña Actions.
 
 jobs:

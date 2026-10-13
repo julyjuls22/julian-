@@ -3,17 +3,37 @@
   "_nota": "Edita libremente esta lista. Cada objeto es un recordatorio. Campos: id, tipo (fijo | ia), activo (true/false), dias ('diario' o lista como ['lun','mie','vie']), mensaje, y para tipo 'ia': prompt, modelo (opcional), mensaje (respaldo opcional).",
   "recordatorios": [
     {
-      "id": "revisar-pipeline",
+      "id": "cobranza-diaria",
       "tipo": "fijo",
       "activo": true,
-      "dias": ["lun", "mie", "vie"],
+      "dias": [
+        "lun",
+        "mar",
+        "mie",
+        "jue",
+        "vie",
+        "sab"
+      ],
+      "mensaje": "💰 Recordatorio: manda a hacer la COBRANZA del día. Revisa saldos pendientes y asigna a quién se le cobra hoy."
+    },
+    {
+      "id": "revisar-pipeline",
+      "tipo": "fijo",
+      "activo": false,
+      "dias": [
+        "lun",
+        "mie",
+        "vie"
+      ],
       "mensaje": "🔔 Recordatorio: revisar el pipeline de agentes y los pendientes del día."
     },
     {
       "id": "cierre-semana",
       "tipo": "fijo",
-      "activo": true,
-      "dias": ["vie"],
+      "activo": false,
+      "dias": [
+        "vie"
+      ],
       "mensaje": "✅ Viernes: cierra tareas de la semana, registra avances y prepara el plan del lunes."
     },
     {
@@ -27,7 +47,9 @@
       "id": "arranque-motivador-ia",
       "tipo": "ia",
       "activo": false,
-      "dias": ["lun"],
+      "dias": [
+        "lun"
+      ],
       "prompt": "Escribe un recordatorio breve (máximo 3 líneas, en español, tono cálido y profesional) para arrancar la semana con foco en el proyecto de agentes de negocio. Incluye una micro-acción concreta para hoy. No uses hashtags.",
       "modelo": "claude-haiku-4-5",
       "max_tokens": 300,
