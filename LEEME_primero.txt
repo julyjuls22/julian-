@@ -1,0 +1,33 @@
+DIPLOMADO — Recordatorios Automáticos con GitHub Actions, Telegram y Claude
+Dra. Elda C. Morales · magIA
+
+CONTENIDO DE ESTE PAQUETE
+-------------------------
+00_Guia_paso_a_paso_estudiante_y_docente.docx
+    Guía completa (Word) para replicar la actividad: objetivos, competencias,
+    conceptos, Parte A (GitHub Actions + Telegram, 7 pasos), Parte B (alertas
+    programadas de Claude), rúbrica, errores frecuentes y guía del docente.
+
+proyecto/
+    Los 8 archivos listos para subir a GitHub (incluye .github/workflows/).
+    Cada alumno lo sube a su propio repositorio privado y pone sus Secrets.
+      - enviar_recordatorio.py   (programa principal)
+      - obtener_chat_id.py       (utilidad para el chat_id)
+      - recordatorios.json       (los recordatorios: edítalo)
+      - requirements.txt
+      - .env.example             (plantilla de credenciales para uso local)
+      - .gitignore               (evita subir el .env)
+      - README.md
+      - .github/workflows/recordatorio.yml  (aquí se cambia la HORA)
+
+skill-claude-recordatorio/
+    SKILL.md instalable para colaboradores que usan Claude/Cowork.
+
+CÓMO EMPEZAR
+------------
+1) Abre 00_Guia_paso_a_paso_estudiante_y_docente.docx y sigue la Parte A.
+2) Regla de oro en GitHub: primero COMMIT (guardar) y luego RUN WORKFLOW.
+3) Nunca subas el archivo .env a GitHub.
+
+Consultado el 12 de octubre de 2026. Verifica precios y nombres de modelo
+de IA en la documentación oficial antes de usarlos.

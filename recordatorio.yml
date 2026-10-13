@@ -1,0 +1,44 @@
+# .github/workflows/recordatorio.yml
+# -----------------------------------------------------------------------------
+# Ejecuta el envío de recordatorios a Telegram en la nube, sin servidor propio.
+#
+# >>> AQUÍ SE CAMBIA EL HORARIO <<<
+# El cron está en UTC. México (CDMX) es UTC-6 (sin horario de verano desde 2022).
+# Para convertir:  hora_UTC = hora_CDMX + 6
+#   08:00 CDMX  ->  14:00 UTC  ->  cron: "0 14 * * *"
+#   07:00 CDMX  ->  13:00 UTC  ->  cron: "0 13 * * *"
+#   20:30 CDMX  ->  02:30 UTC (del día siguiente) -> cron: "30 2 * * *"
+# Formato del cron:  "minuto hora dia-del-mes mes dia-de-la-semana"
+# Puedes poner varias líneas de cron para varios horarios.
+#
+# NOTA: los cron de GitHub Actions pueden retrasarse algunos minutos.
+# No lo uses para avisos con exactitud de segundos.
+# -----------------------------------------------------------------------------
+name: recordatorio-telegram
+
+on:
+  schedule:
+    - cron: "0 14 * * *"      # 08:00 CDMX todos los días. Edita este valor.
+  workflow_dispatch: {}       # botón para ejecutarlo a mano desde la pestaña Actions.
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Enviar recordatorios
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python enviar_recordatorio.py
